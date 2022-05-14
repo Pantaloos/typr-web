@@ -1,13 +1,86 @@
+@import url("https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap");
+
 body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+	margin: 0;
+	font-family: "Space Mono", monospace;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+	font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
+}
+
+.App {
+	margin: 16px;
+}
+
+$pixel-increment: 4px;
+$percent-increment: 1.5%;
+
+@for $i from 1 through 32 {
+	.mt-#{$i} {
+		margin-top: $i * $pixel-increment !important;
+	}
+	.mb-#{$i} {
+		margin-bottom: $i * $pixel-increment !important;
+	}
+	.ml-#{$i} {
+		margin-left: $i * $pixel-increment !important;
+	}
+	.mr-#{$i} {
+		margin-right: $i * $pixel-increment !important;
+	}
+	.m-#{$i} {
+		margin: $i * $pixel-increment !important;
+	}
+
+	.pt-#{$i} {
+		padding-top: $i * $pixel-increment !important;
+	}
+	.pb-#{$i} {
+		padding-bottom: $i * $pixel-increment !important;
+	}
+	.pl-#{$i} {
+		padding-left: $i * $pixel-increment !important;
+	}
+	.pr-#{$i} {
+		padding-right: $i * $pixel-increment !important;
+	}
+	.p-#{$i} {
+		padding: $i * $pixel-increment !important;
+	}
+
+	.mtpc-#{$i} {
+		margin-top: $i * $percent-increment !important;
+	}
+	.mbpc-#{$i} {
+		margin-bottom: $i * $percent-increment !important;
+	}
+	.mlpc-#{$i} {
+		margin-left: $i * $percent-increment !important;
+	}
+	.mrpc-#{$i} {
+		margin-right: $i * $percent-increment !important;
+	}
+	.mpc-#{$i} {
+		margin: $i * $percent-increment !important;
+	}
+
+	.wpc-#{$i} {
+		width: $i * $percent-increment * 5 !important;
+	}
+
+	.hpc-#{$i} {
+		height: $i * $percent-increment * 5 !important;
+	}
+}
+
+.no-pointer-events {
+	pointer-events: none;
+}
+
+.z-important {
+	position: relative;
+	z-index: 1000;
 }
