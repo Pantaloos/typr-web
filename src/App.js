@@ -4,11 +4,9 @@ import Button from "components/Button/Button";
 function App() {
 	return (
 		<div className="App">
-			<Text type="giant" customStyle="landing-title color-light">
-				Typr - Example Giant
-			</Text>
-			<Text type="header" customStyle="landing-title color-light">
-				Typr - Example Giant
+			<Text type="giant">Typr - Example Giant</Text>
+			<Text type="header" customStyle="mt-4">
+				Typr - Example Header
 			</Text>
 			<Button type="action" customStyle="mt-4">
 				PLAY
