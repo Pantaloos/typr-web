@@ -1,0 +1,58 @@
+@import "constants/sizes.scss";
+@import "constants/colors.scss";
+
+.any-text {
+	max-height: inherit;
+	overflow: hidden;
+	word-wrap: break-word;
+
+	font-family: "Space Mono", monospace;
+
+	color: $dark;
+}
+
+.giant-text {
+	@extend .any-text;
+
+	font-size: $large-b;
+	font-weight: 700;
+}
+
+.header-text {
+	@extend .any-text;
+
+	display: block;
+	font-size: $large-a;
+	font-weight: 700;
+}
+
+.label-small-text {
+	@extend .any-text;
+
+	display: block;
+	font-size: $medium-a;
+	font-weight: 700;
+}
+
+.label-text {
+	@extend .any-text;
+
+	display: block;
+	font-size: $medium-b;
+	font-weight: 700;
+}
+
+.basic-text {
+	@extend .any-text;
+
+	font-size: $small;
+	font-weight: 700;
+}
+
+.fw-400 {
+	font-weight: 400;
+}
+
+.fw-700 {
+	font-weight: 700;
+}
