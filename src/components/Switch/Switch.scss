@@ -11,6 +11,9 @@
   align-items: center;
   text-transform: uppercase;
   cursor: pointer;
+  border: none;
+  width: 70px;
+  height: 50px;
 }
 
 .switch-button.left {
@@ -22,17 +25,13 @@
 }
 
 .switch-button.on {
+  @extend .switch-button;
   background-color: $primary;
   color: $primary-dark-a;
-  border: none;
-  width: 70px;
-  height: 50px;
 }
 
 .switch-button.off {
+  @extend .switch-button;
   background-color: $primary-dark-b;
   color: $primary-light;
-  border: none;
-  width: 70px;
-  height: 50px;
 }
