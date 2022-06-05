@@ -1,5 +1,6 @@
 import Text from "components/Text/Text";
 import Button from "components/Button/Button";
+import Room from "components/Room/Room";
 import {ReactComponent as ReactLogo} from "./assets/icons/rightArrow.svg"	
 
 function App() {
@@ -13,19 +14,21 @@ function App() {
 				PLAY
 			</Button>
 			<div></div>
-			<Button type="filled" customStyle="mt-4">
+			<Button type="filled">
 				START/READY
 			</Button>
 			<div></div>
-			<Button type="outline" customStyle="mt-4">
+			<Button type="outline" style={{padding:20 ,fontSize:24}}>
 				basic
 			</Button>
 			<div/>
-			<Button type="filled-with-icon" customStyle="mt-4" style={{width: "50px", height : "50px"}}>
+			<Button type="filled-with-icon">
 				<div className="icon-container">
 				<ReactLogo width = {25} height = {25} />
 				</div>
 			</Button>
+			<Room roomName="test" numberOfPeople="8" onClick={()=>{console.log("bruh")}}>
+			</Room>
 		</div>
 	);
 }
