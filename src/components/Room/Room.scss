@@ -1,0 +1,23 @@
+@import "constants/sizes.scss";
+@import "constants/colors.scss";
+
+.basic-room{
+    display: flex;
+    justify-content: space-between;
+}
+
+.roomRightside{
+    display: flex;
+    align-items: center;
+}
+
+.roomLeftSide{
+    display: flex;
+    align-items: center;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.numberOfpeople{
+    padding-right: 15px;
+}

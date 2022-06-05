@@ -18,3 +18,50 @@
 	border-radius: 3px;
 	padding: 13px 32px;
 }
+
+.filled-btn {
+	@extend .any-btn;
+
+	background-color: $primary;
+	color: $primary-dark-a;
+	font-size: 42px;
+	height: fit-content;
+	width: fit-content;
+	padding: 20px 40px;
+	
+	border-radius: 5px;
+}
+
+.outline-btn {
+	@extend .any-btn;
+
+	border: 4px solid $primary;
+	border-radius: 5px;
+
+	background-color: $primary-dark-a;
+	color: $primary-light;
+	font-size: 24px;
+
+	height: 100px;
+	width: fit-content;
+
+	
+	border-radius: 5px;
+}
+
+.filled-with-icon-btn {
+	@extend .any-btn;
+	background-color: $primary;
+	color: $primary-light;
+	font-size: 24px;
+	
+	width: 50px;
+	height: 50px;
+	
+	border-radius: 5px;
+}
+.icon-container{
+	display: flex;
+  	align-items: center;
+  	justify-content: center;
+}
