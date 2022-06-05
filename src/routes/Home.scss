@@ -64,3 +64,17 @@ body{
     height: 41px;
     font-size: 18px;
 }
+.fillWidth{
+    width: 100%;
+}
+.fill-80p{
+    width: 80%;
+}
+.background-dark-a{
+    background-color: $primary-dark-a;
+}
+
+.background-dark-b{
+    background-color: $primary-dark-b;
+    border-radius: 5px;
+}

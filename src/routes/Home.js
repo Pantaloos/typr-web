@@ -1,5 +1,6 @@
 import Button from "components/Button/Button";
 import Input from "components/Input/Input";
+import Room from "components/Room/Room";
 import Text from "components/Text/Text";
 import "./Home.scss";
 function home() {
@@ -29,8 +30,9 @@ function home() {
                 
                 <div id="right-div">
                     <Text type="basic" customStyle="center-text">AVAILABLE ROOMS</Text>
-                    <div className="rootDiv">
-                        {/* rooms go here */}
+                    <div className="rootDiv background-dark-a fillWidth">
+                        <Room roomName="test" numberOfPeople="8" customStyle="mt-4 background-dark-b"></Room>
+                        <Room roomName="levante" numberOfPeople="4" customStyle="mt-4 background-dark-b"></Room>
                     </div>
                 </div>
             </div>
@@ -39,3 +41,5 @@ function home() {
 }
 
 export default home;
+
+//todo change rootDiv name to flex-colunm
