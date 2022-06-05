@@ -1,0 +1,66 @@
+@import "constants/sizes.scss";
+@import "constants/colors.scss";
+
+body{
+    background-color: $gradient-a
+}
+.rootDiv{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.siteName{
+    padding-top: 60px;
+    padding-bottom: 51px;
+    color: $primary;
+    font-weight: bold;
+    font-style: italic;
+    font-size: 84px;
+    overflow: visible;
+}
+#top-container{
+    display: flex;
+}
+
+#left-div{
+    min-width: 200px;
+    padding-right: 10px;
+}
+
+#right-div{
+    padding-left: 10px;
+    min-width: 300px;
+}
+
+.left-btn{
+    margin-bottom: 24px;
+    width: 100%;
+}
+
+.center-text{
+    display: flex;
+    align-items: center;
+    justify-content: center;    
+    background-color: $primary-dark-b;
+    padding: 10px 20px;
+    color: $primary;
+    border-radius: 5px;
+}
+
+.inputs-container{
+    padding: 20px 10px;
+    background-color: $primary-dark-a;
+}
+
+.label-class{
+    font-size: 16px;
+    color: $primary-light;
+}
+
+.input-code{
+    background-color: $primary-dark-b;
+    width: 110px;
+    height: 41px;
+    font-size: 18px;
+}
