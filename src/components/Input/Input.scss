@@ -1,0 +1,48 @@
+@import "constants/sizes.scss";
+@import "constants/colors.scss";
+
+.any-input{
+    border: none;
+    border-radius: 3px;
+    background-color: $primary-dark-b;
+    color: $primary-light;
+    outline: none;
+}
+
+.single-input{
+    @extend .any-input;
+    width: 15.875rem;
+    height: 3.188rem;
+    font-size: 2em;
+}
+
+.multiple-input{
+    @extend .any-input;
+    resize: none;
+    font-size: 2em;
+    line-height: 120%;
+    
+    
+    width: inherit;
+    height: inherit;
+}
+
+
+.flex-input-container{
+    display: flex;
+    flex-direction: column;
+}
+
+.label-text{
+	color: $primary-light;
+    padding-bottom: 0px;
+}
+
+.input-textarea-wrapper{
+    background-color: $primary-dark-b;
+    padding: 11px 20px 11px 20px;
+    border-radius: 3px;
+    
+    width: 27.125rem;
+    height: 9.625rem;
+}
