@@ -7,7 +7,6 @@
     background-color: $primary-dark-b;
     color: $primary-light;
     outline: none;
-    // todo specify font-family
 }
 
 .single-input{
@@ -29,21 +28,14 @@
 }
 
 
-.any-input-container{
-    background-color: $primary-dark-a;
-    padding: 13px 32px;
-    
-}
-
 .flex-input-container{
-    @extend .any-input-container;
     display: flex;
     flex-direction: column;
 }
 
 .label-text{
 	color: $primary-light;
-    padding-bottom: 5px;
+    padding-bottom: 0px;
 }
 
 .input-textarea-wrapper{
