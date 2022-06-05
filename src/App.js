@@ -1,6 +1,6 @@
 import Text from "components/Text/Text";
 import Button from "components/Button/Button";
-import {ReactComponent as ReactLogo} from "./icons/rightArrow.svg"	
+import {ReactComponent as ReactLogo} from "./assets/icons/rightArrow.svg"	
 
 function App() {
 	return (
