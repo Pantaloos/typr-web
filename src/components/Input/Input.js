@@ -8,19 +8,23 @@ const Input = ({
     maxLength = "48",
     inputRef,
     label = "",
+    customLabelClass="",
+    customInputClass="",
     ...props 
     }) => {
 	const inputType = hidden ? "password" : "text";
 
     const inputTypeClass = type;
-    const inputClassName = `${inputTypeClass}-input`;
+    const inputClassName = `${inputTypeClass}-input ${customInputClass}`;
+
+    const labelClass=`${customLabelClass} label-text`
 
     if(type === "single")
         return (
             <div className={ containerStyle + "-input-container"}>
                 {
                     label !=="" &&
-                    <text className="label-text">
+                    <text className={labelClass}>
                         {label}
                     </text>
                 }
