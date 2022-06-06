@@ -4,6 +4,18 @@ import Room from "components/Room/Room";
 import Text from "components/Text/Text";
 import "./Home.scss";
 function home() {
+    let code =""
+    let nickname=""
+    
+    const codeInputHandler = (enteredInput)=>{
+        code = enteredInput
+    }
+
+    const nicknameInputHandler = (enteredInput)=>{
+        nickname = enteredInput
+    }
+
+
 	return (
 		<div className="rootDiv">
             <Text type="giant" customStyle="siteName"> TYPR.IO</Text>
@@ -15,15 +27,15 @@ function home() {
                         <div style={{display:"flex"}}>
                             
                             <div className="inputs-container">
-                                <Input type="single" label="CODE" customLabelClass="label-class" customInputClass="input-code" maxLength="4" ></Input>
+                                <Input type="single" label="CODE" customLabelClass="label-class" customInputClass="input-code" maxLength="4" onSaveInputData={codeInputHandler} ></Input>
                             </div>
 
                             <div className="inputs-container">
-                                <Input type="single" label="NICKNAME" customLabelClass="label-class" customInputClass="input-code" maxLength="12" ></Input>
+                                <Input type="single" label="NICKNAME" customLabelClass="label-class" customInputClass="input-code" maxLength="12"  onSaveInputData={nicknameInputHandler} ></Input>
                             </div>
 
                         </div>
-                        <Button type="filled"  customStyle="left-btn"> JOIN</Button>
+                        <Button type="filled"  customStyle="left-btn" onClick={()=>{console.log(code,nickname)}}> JOIN</Button>
                     </div>
                 </div>
 

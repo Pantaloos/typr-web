@@ -1,4 +1,6 @@
 import "./Input.scss";
+import { useState } from "react";
+import { useEffect } from "react";
 
 const Input = ({
     type = "", 
@@ -10,14 +12,26 @@ const Input = ({
     label = "",
     customLabelClass="",
     customInputClass="",
+    onSaveInputData,
     ...props 
     }) => {
+    const [input,setInput] = useState('')
+    
 	const inputType = hidden ? "password" : "text";
 
     const inputTypeClass = type;
     const inputClassName = `${inputTypeClass}-input ${customInputClass}`;
 
     const labelClass=`${customLabelClass} label-text`
+
+    const saveInput = (event)=>{
+        setInput(event.target.value)
+    }
+
+    useEffect(()=>{
+        onSaveInputData(input)
+    }
+    ,[input,onSaveInputData])
 
     if(type === "single")
         return (
@@ -35,6 +49,7 @@ const Input = ({
                     type={inputType}
                     placeholder={placeholder}
                     maxLength={maxLength}
+                    onChange={e => saveInput(e)}
                 />
             </div>
         );
