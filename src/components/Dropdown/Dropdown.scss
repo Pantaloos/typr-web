@@ -1,0 +1,118 @@
+@import "constants/sizes.scss";
+@import "constants/colors.scss";
+
+// html {
+//   -webkit-box-sizing: border-box;
+//   box-sizing: border-box;
+// }
+// *,
+// *:before,
+// *:after {
+//   -webkit-box-sizing: inherit;
+//   box-sizing: inherit;
+// }
+
+body {
+  padding: 0;
+  line-height: 1;
+  font-size: 16px;
+  font-family: "Space Mono", monospace;
+  color: #202020;
+  background-color: #fbfbfb;
+  font-smooth: always;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.container {
+  width: 309px;
+  height: 80px;
+}
+
+@mixin styling() {
+  background-color: $primary-dark-b;
+  border-color: $primary;
+  border-radius: 4px;
+  border-style: solid;
+  border-width: 3px;
+}
+
+/* DROPDOWN
+============================================ */
+
+.up-down-signs {
+  transform: rotate(90deg);
+  color: $primary;
+  font-weight: bold;
+  font-size: $medium-b;
+  //font-family: "Space Mono", monospace;
+}
+
+.dd-wrapper {
+  display: flex;
+  min-height: 38px;
+  flex-wrap: wrap;
+
+  .dd-header {
+    @include styling();
+    display: flex;
+    justify-content: space-between;
+    cursor: pointer;
+    width: 100%;
+    padding: 0 20px;
+
+    &__title--bold {
+      color: $primary-light;
+      font-weight: bold;
+      font-size: $medium-b;
+    }
+  }
+
+  .dd-list {
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    margin-top: 20px;
+
+    li {
+      list-style-type: none;
+
+      &:first-of-type {
+        > button {
+          border-top: 3px solid $primary;
+          border-top-left-radius: 4px;
+          border-top-right-radius: 4px;
+        }
+      }
+
+      &:last-of-type > button {
+        border-bottom-left-radius: 4px;
+        border-bottom-right-radius: 4px;
+        border-bottom: 3px solid $primary;
+      }
+
+      button {
+        display: flex;
+        justify-content: space-between;
+        background-color: $primary-dark-b;
+        font-size: $medium-b;
+        font-weight: bold;
+        color: $primary-light;
+        font-family: "Space Mono";
+        padding: 15px 20px 15px 20px;
+        border: 0;
+        width: 100%;
+        text-align: left;
+        border-left: 3px solid $primary;
+        border-right: 3px solid $primary;
+        &:hover,
+        &:focus {
+          cursor: pointer;
+          font-weight: bold;
+          background-color: $primary;
+          color: $primary-dark-b;
+        }
+      }
+    }
+  }
+}
