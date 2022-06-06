@@ -1,28 +1,22 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./Dropdown.scss";
 
-const Dropdown = ({ multiSelect = false }) => {
-  const items = [
-    {
-      id: 1,
-      value: "60 Seconds",
-    },
-    {
-      id: 2,
-      value: "90 Seconds",
-    },
-    {
-      id: 3,
-      value: "120 Seconds",
-    },
-  ];
-
-  const initialTitle = "Select Time";
-
+const Dropdown = ({
+  multiSelect = false,
+  items,
+  initialTitle,
+  onValueChange,
+}) => {
   const [open, setOpen] = useState(false);
   const [title, setTitle] = useState(initialTitle);
   const [selection, setSelection] = useState([]);
   const toggle = () => setOpen(!open);
+
+  useEffect(() => {
+    if (!open) {
+      onValueChange(title);
+    }
+  }, [title]);
 
   function handleOnClick(item) {
     if (!selection.some((current) => current.id === item.id)) {
