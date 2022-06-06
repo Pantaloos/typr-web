@@ -2,7 +2,14 @@ import "./Display.scss"
 import Input from "components/Input/Input"
 import { useEffect, useState } from "react"
 
-function Display({ text = "placeholder  ", ...props }) {
+function Display({
+  text = "placeholder  ",
+  displayCustomStyle = "",
+  displayTextStyle = "",
+  inputCustomStyle = "",
+  inputTextStyle = "",
+  ...props
+}) {
   let fullText = text
 
   const [playerInput, updatePlayerInput] = useState("")
@@ -31,14 +38,21 @@ function Display({ text = "placeholder  ", ...props }) {
     updateCurrentChar(leftChars.slice(0, 1))
   }, [leftChars])
 
+  const displayStyle = `text-display ${displayTextStyle} ${displayCustomStyle}`
+  const inputStyle = `${inputTextStyle} ${inputCustomStyle}`
+
   return (
     <div className="flex-column">
-      <div className="text-display">
+      <div className={displayStyle}>
         <span className="correct-chars">{correctChars}</span>
         <span className="current-char">{currentChar}</span>
         {leftChars.slice(1, leftChars.length)}
       </div>
-      <Input type="multiple" onSaveInputData={playerInputHandler}></Input>
+      <Input
+        className={inputStyle}
+        type="multiple"
+        onSaveInputData={playerInputHandler}
+      ></Input>
     </div>
   )
 }
