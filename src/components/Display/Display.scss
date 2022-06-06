@@ -1,0 +1,39 @@
+@import "constants/sizes.scss";
+@import "constants/colors.scss";
+
+.flex-column{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.text-display{
+    max-width: 60%;
+    padding: 140px 120px;
+    margin-top: $small;
+    margin-bottom: $small;
+
+    
+    background-color: $primary-dark-a;
+    color: $primary-light;
+    line-height: $large-a;
+
+    border-radius: 5px;
+
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -o-user-select: none;
+    user-select: none;
+
+}
+
+.correct-chars{
+    opacity: 0.5;
+}
+
+.current-char{
+    background-color: $primary;
+    color: $dark;
+}
