@@ -5,6 +5,7 @@ body {
 	font-family: "Space Mono", monospace;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
+	box-sizing: border-box;
 }
 
 code {
@@ -83,4 +84,102 @@ $percent-increment: 1.5%;
 .z-important {
 	position: relative;
 	z-index: 1000;
+}
+
+.w-100 {
+	width: 100%;
+}
+
+.h-100 {
+	height: 100%;
+}
+
+.capitalize {
+	text-transform: uppercase;
+}
+
+.unselectable {
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}
+
+.corner-tl {
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+
+.corner-tr {
+	position: absolute;
+	top: 0;
+	right: 0;
+}
+
+.corner-bl {
+	position: absolute;
+	bottom: 0;
+	right: 0;
+}
+.corner-br {
+	position: absolute;
+	bottom: 0;
+	right: 0;
+}
+
+.flex {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.flex-center-h {
+	@extend .flex;
+
+	flex-direction: row;
+}
+
+.flex-center-v {
+	@extend .flex;
+
+	flex-direction: column;
+}
+
+.flex-v {
+	display: flex;
+	flex-direction: column;
+}
+
+.flex-h {
+	display: flex;
+	flex-direction: row;
+}
+
+.flex-align-start {
+	align-items: flex-start;
+}
+
+.ft-thin {
+	font-weight: 100;
+}
+
+.cursor-pointer {
+	cursor: pointer;
+}
+
+.event-transparent {
+	pointer-events: none;
+}
+
+.one-liner {
+	white-space: nowrap;
+	overflow: hidden;
+}
+
+.overflow-dots {
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	overflow: hidden;
 }

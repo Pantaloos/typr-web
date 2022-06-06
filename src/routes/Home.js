@@ -3,55 +3,71 @@ import Input from "components/Input/Input";
 import Room from "components/Room/Room";
 import Text from "components/Text/Text";
 import "./Home.scss";
-function home() {
-    let code =""
-    let nickname=""
-    
-    const codeInputHandler = (enteredInput)=>{
-        code = enteredInput
-    }
 
-    const nicknameInputHandler = (enteredInput)=>{
-        nickname = enteredInput
-    }
-
-
+const Box = ({ title, children }) => {
 	return (
-		<div className="rootDiv">
-            <Text type="giant" customStyle="siteName"> TYPR.IO</Text>
-            <div id="top-container">
-                <div id="left-div">
-                    <Button type="filled" customStyle="left-btn" > PLAY</Button>
-                    <div className="top-container">
-                        <Text type="basic" customStyle="center-text">JOIN A ROOM</Text>
-                        <div style={{display:"flex"}}>
-                            
-                            <div className="inputs-container">
-                                <Input type="single" label="CODE" customLabelClass="label-class" customInputClass="input-code" maxLength="4" onSaveInputData={codeInputHandler} ></Input>
-                            </div>
+		<div className="w-100 h-100">
+			<Text type="basic" customStyle="box-title">
+				{title}
+			</Text>
+			<div className="w-100 h-100 box-container">{children}</div>
+		</div>
+	);
+};
 
-                            <div className="inputs-container">
-                                <Input type="single" label="NICKNAME" customLabelClass="label-class" customInputClass="input-code" maxLength="12"  onSaveInputData={nicknameInputHandler} ></Input>
-                            </div>
+function Home() {
+	return (
+		<div className="flex flex-v">
+			<Text type="giant" customStyle="siteName">
+				TYPR.IO
+			</Text>
+			<div className="flex flex-align-start">
+				<div style={{ width: "360px", marginRight: "24px" }}>
+					<Button type="filled" textType="large-b" customStyle="fw-700 w-100 mb-2">
+						PLAY
+					</Button>
+					<Box title="JOIN A ROOM">
+						<div className="flex mb-4">
+							<Input
+								type="single"
+								label="CODE"
+								customLabelClass="label-class"
+								customInputClass="input-code"
+								containerStyle="mr-4"
+								maxLength="4"
+							/>
 
-                        </div>
-                        <Button type="filled"  customStyle="left-btn" onClick={()=>{console.log(code,nickname)}}> JOIN</Button>
-                    </div>
-                </div>
+							<Input
+								type="single"
+								label="NICKNAME"
+								customLabelClass="label-class"
+								customInputClass="input-code"
+								maxLength="12"
+							></Input>
+						</div>
+					</Box>
+					<Button type="filled" textType="large-b" customStyle="fw-700 w-100 mb-2">
+						JOIN
+					</Button>
+				</div>
 
-                
-                <div id="right-div">
-                    <Text type="basic" customStyle="center-text">AVAILABLE ROOMS</Text>
-                    <div className="rootDiv background-dark-a fillWidth">
-                        <Room roomName="test" numberOfPeople="8" customStyle="mt-4 background-dark-b"></Room>
-                        <Room roomName="levante" numberOfPeople="4" customStyle="mt-4 background-dark-b"></Room>
-                    </div>
-                </div>
-            </div>
+				<div style={{ width: "660px", height: "300px" }}>
+					<Box title="AVAILABLE ROOMS">
+						<Room
+							roomName="test"
+							numberOfPeople="8"
+							customStyle="mt-4 background-dark-b"
+						></Room>
+						<Room
+							roomName="levante"
+							numberOfPeople="4"
+							customStyle="mt-4 background-dark-b"
+						></Room>
+					</Box>
+				</div>
+			</div>
 		</div>
 	);
 }
 
-export default home;
-
-//todo change rootDiv name to flex-colunm
+export default Home;
