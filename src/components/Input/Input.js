@@ -12,7 +12,7 @@ const Input = ({
     label = "",
     customLabelClass="",
     customInputClass="",
-    onSaveInputData,
+    onSaveInputData = ()=>{},
     ...props 
     }) => {
     const [input,setInput] = useState('')
@@ -38,9 +38,9 @@ const Input = ({
             <div className={ containerStyle + "-input-container"}>
                 {
                     label !=="" &&
-                    <text className={labelClass}>
+                    <span className={labelClass}>
                         {label}
-                    </text>
+                    </span>
                 }
                 <input
                     {...props}
@@ -63,6 +63,7 @@ const Input = ({
                         className = {inputClassName}
                         type={inputType}
                         placeholder={placeholder}
+                        onChange={e => saveInput(e)}
                     />
                 </div>
             </div>
