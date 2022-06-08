@@ -4,7 +4,7 @@ import Room from "components/Room/Room";
 import Text from "components/Text/Text";
 import "./Home.scss";
 
-const Box = ({ title, children }) => {
+export const Box = ({ title, children }) => {
 	return (
 		<div className="w-100 h-100">
 			<Text type="basic" customStyle="box-title">
