@@ -13,7 +13,6 @@ const Room = () => {
   const { nickname } = state
 
   const [playersInfo, updatePlayersInfo] = useState([])
-  const [gameStarting, updateGameStarting] = useState(false)
 
   const socket = useContext(SocketContext)
   const navigate = useNavigate()
@@ -34,22 +33,15 @@ const Room = () => {
       })
       socket.on("gameStarted", (data) => {
         console.log(data)
-        updateGameStarting(true)
+        navigate(`/game/${id}`, { state: { gameText: data.text } })
         //console.log(data)
       })
-
-      // return () => {
-      //   if (!gameStarting) {
-      //     console.log("deleting room")
-      //     socket.emit("leaveRoom", { roomCode: id })
-      //   }
-      // }
     }
   }, [])
 
-  useEffect(() => {
-    if (gameStarting) navigate(`/game/${id}`)
-  }, [gameStarting])
+  // useEffect(() => {
+  //   if (gameStarting) navigate(`/game/${id}`)
+  // }, [gameStarting])
 
   return (
     <div
