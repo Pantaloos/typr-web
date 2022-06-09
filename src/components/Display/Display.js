@@ -8,6 +8,7 @@ function Display({
   displayTextStyle = "",
   inputCustomStyle = "",
   inputTextStyle = "",
+  gameOverHandle = () => {},
   ...props
 }) {
   let fullText = text
@@ -37,6 +38,12 @@ function Display({
   useEffect(() => {
     updateCurrentChar(leftChars.slice(0, 1))
   }, [leftChars])
+
+  useEffect(() => {
+    if (playerInput == fullText) {
+      gameOverHandle()
+    }
+  }, [correctChars, playerInput])
 
   const displayStyle = `text-display ${displayTextStyle} ${displayCustomStyle}`
   const inputStyle = `${inputTextStyle} ${inputCustomStyle}`
