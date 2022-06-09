@@ -1,31 +1,8 @@
-import Dropdown from "components/Dropdown/Dropdown";
+import Timer from "components/Timer/Timer.";
 import React from "react";
 
 const App = () => {
-  const items = [
-    {
-      id: 1,
-      value: "60 Seconds",
-    },
-    {
-      id: 2,
-      value: "90 Seconds",
-    },
-    {
-      id: 3,
-      value: "120 Seconds",
-    },
-  ];
-
-  return (
-    <div className="container">
-      <Dropdown
-        initialTitle="Select Time"
-        items={items}
-        onValueChange={(value) => console.log(value)}
-      ></Dropdown>
-    </div>
-  );
+  return <Timer initialMinute="2" initialSeconds="40"></Timer>;
 };
 
 export default App;

@@ -1,0 +1,10 @@
+@import "constants/sizes.scss";
+@import "constants/colors.scss";
+
+.my-h {
+  margin: 0px;
+  padding: 0px;
+  color: $primary;
+  font-family: "Space Mono", monospace;
+  background: none;
+}
