@@ -3,6 +3,7 @@ import "./Game.scss"
 import React, { useState, useContext, useEffect } from "react"
 import { useParams, useLocation, useNavigate } from "react-router-dom"
 import { SocketContext } from "../../socket"
+import Timer from "components/Timer/Timer"
 
 function Game() {
   const socket = useContext(SocketContext)
@@ -22,6 +23,11 @@ function Game() {
     }
   }, [])
 
-  return <Display text={gameText}></Display>
+  return (
+    <div className="flex-v">
+      <Timer initialSeconds={10}></Timer>
+      <Display text={gameText}></Display>
+    </div>
+  )
 }
 export default Game
