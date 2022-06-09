@@ -31,7 +31,6 @@ const Room = () => {
 
       socket.on("roomUpdated", (data) => {
         updatePlayersInfo(data)
-        //console.log(data)
       })
       socket.on("gameStarted", (data) => {
         console.log(data)
@@ -39,14 +38,17 @@ const Room = () => {
         //console.log(data)
       })
 
-      return () => {
-        if (!gameStarting) socket.emit("leaveRoom", { roomCode: id })
-      }
+      // return () => {
+      //   if (!gameStarting) {
+      //     console.log("deleting room")
+      //     socket.emit("leaveRoom", { roomCode: id })
+      //   }
+      // }
     }
   }, [])
 
   useEffect(() => {
-    if (gameStarting) navigate("/game")
+    if (gameStarting) navigate(`/game/${id}`)
   }, [gameStarting])
 
   return (

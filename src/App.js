@@ -11,7 +11,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />}></Route>
           <Route path="/room/:id" element={<Room />}></Route>
-          <Route path="/game" element={<Game />}></Route>
+          <Route path="/game/:id" element={<Game />}></Route>
         </Routes>
       </Router>
     </SocketContext.Provider>

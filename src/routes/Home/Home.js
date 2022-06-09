@@ -61,6 +61,27 @@ function Home() {
             type="filled"
             textType="large-b"
             customStyle="fw-700 w-100 mb-2"
+            onClick={() => {
+              if (nickname != "") {
+                fetch("http://188.121.208.146:8000/room", {
+                  method: "POST",
+                  headers: {
+                    Accept: "application/json, text/plain, */*",
+                    "Content-Type": "application/json",
+                  },
+                  body: JSON.stringify({ name: nickname }),
+                })
+                  .then((response) => {
+                    return response.json()
+                  })
+                  .then((data) => {
+                    console.log(data)
+                    navigate(`/room/${data.code}`, {
+                      state: { nickname: nickname },
+                    })
+                  })
+              }
+            }}
           >
             PLAY
           </Button>
@@ -90,6 +111,13 @@ function Home() {
             type="filled"
             textType="large-b"
             customStyle="fw-700 w-100 mb-2"
+            onClick={() => {
+              if (nickname != "" && code.length == 5) {
+                navigate(`/room/${code}`, {
+                  state: { nickname: nickname },
+                })
+              }
+            }}
           >
             JOIN
           </Button>
