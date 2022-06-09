@@ -40,7 +40,7 @@ function Display({
   }, [leftChars])
 
   useEffect(() => {
-    if (playerInput == fullText) {
+    if (playerInput === fullText) {
       gameOverHandle()
     }
   }, [correctChars, playerInput])
