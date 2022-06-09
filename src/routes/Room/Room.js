@@ -55,7 +55,6 @@ const Room = () => {
     <div
       className="flex"
       style={{
-        width: "100vw",
         height: "100vh",
         position: "relative",
         bottom: "60px",
