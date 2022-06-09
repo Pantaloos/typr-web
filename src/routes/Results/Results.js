@@ -1,6 +1,6 @@
-import "./Results.scss";
-import Button from "components/Button/Button";
-import { Box } from "./Home";
+import "./Results.scss"
+import Button from "components/Button/Button"
+import Box from "components/Box/Box"
 
 const Results = () => {
   return (
@@ -54,7 +54,7 @@ const Results = () => {
         ></Button>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default Results;
+export default Results

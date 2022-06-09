@@ -1,0 +1,19 @@
+@import "constants/sizes.scss";
+@import "constants/colors.scss";
+
+.box-title {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background-color: $primary-dark-b;
+	font-size: $large-a;
+	padding: 15px 20px;
+	color: $primary;
+	border-radius: 5px;
+}
+
+.box-container {
+	padding: 30px 50px;
+	background-color: $primary-dark-a;
+	box-sizing: border-box;
+}
