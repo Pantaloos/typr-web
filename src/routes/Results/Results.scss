@@ -1,0 +1,101 @@
+@import "constants/sizes.scss";
+@import "constants/colors.scss";
+
+body {
+  background-color: $gradient-a;
+}
+
+.siteName {
+  padding-top: 60px;
+  padding-bottom: 51px;
+  color: $primary;
+  font-weight: bold;
+  font-style: italic;
+  font-size: $giant;
+  overflow: visible;
+}
+
+.height100h {
+  height: 100vh;
+}
+
+.box-title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: $primary-dark-b;
+  font-size: $large-a;
+  padding: 15px 20px;
+  color: $primary;
+  border-radius: 5px;
+}
+
+.my-button-left {
+  padding: 13px 58px;
+  font-size: $large-b;
+  margin-right: 13px;
+  margin-top: 19px;
+}
+
+.my-button-right {
+  padding: 13px 57px;
+  font-size: $large-b;
+  margin-top: 19px;
+}
+
+.container-height {
+  height: auto;
+  border-bottom-right-radius: 3px;
+  border-bottom-left-radius: 3px;
+}
+
+.main-div {
+  height: none;
+}
+
+.space-between {
+  justify-content: space-between;
+}
+
+.points-color {
+  color: $primary;
+  margin-right: 15px;
+}
+
+.header-padding {
+  padding: 20px 237.5px;
+  border-bottom-right-radius: 0px;
+  border-bottom-left-radius: 0px;
+}
+
+.box-container {
+  padding: 30px 50px;
+  background-color: $primary-dark-a;
+  box-sizing: border-box;
+}
+
+.label-class {
+  font-size: 16px;
+  color: $primary-light;
+}
+
+.input-code {
+  background-color: $primary-dark-b;
+  width: 110px;
+  height: 41px;
+  font-size: 18px;
+}
+.fillWidth {
+  width: 100%;
+}
+.fill-80p {
+  width: 80%;
+}
+.background-dark-a {
+  background-color: $primary-dark-a;
+}
+
+.background-dark-b {
+  background-color: $primary-dark-b;
+  border-radius: 5px;
+}

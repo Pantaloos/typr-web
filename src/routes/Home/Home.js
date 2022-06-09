@@ -5,17 +5,8 @@ import Text from "components/Text/Text"
 import { useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom"
 import "./Home.scss"
-
-export const Box = ({ title, children }) => {
-  return (
-    <div className="w-100 h-100">
-      <Text type="basic" customStyle="box-title">
-        {title}
-      </Text>
-      <div className="w-100 h-100 box-container">{children}</div>
-    </div>
-  )
-}
+//import Box
+import Box from "components/Box/Box"
 
 function Home() {
   const navigate = useNavigate()
@@ -62,7 +53,7 @@ function Home() {
             textType="large-b"
             customStyle="fw-700 w-100 mb-2"
             onClick={() => {
-              if (nickname != "") {
+              if (nickname !== "") {
                 fetch("http://188.121.208.146:8000/room", {
                   method: "POST",
                   headers: {
@@ -112,7 +103,7 @@ function Home() {
             textType="large-b"
             customStyle="fw-700 w-100 mb-2"
             onClick={() => {
-              if (nickname != "" && code.length == 5) {
+              if (nickname !== "" && code.length === 5) {
                 navigate(`/room/${code}`, {
                   state: { nickname: nickname },
                 })
@@ -132,7 +123,7 @@ function Home() {
                 numberOfPeople="??"
                 customStyle="mt-4 background-dark-b"
                 onClick={() => {
-                  if (nickname != "") {
+                  if (nickname !== "") {
                     navigate(`/room/${room.code}`, {
                       state: { nickname: nickname },
                     })

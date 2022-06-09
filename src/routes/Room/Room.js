@@ -1,6 +1,6 @@
 import Button from "components/Button/Button"
 import Text from "components/Text/Text"
-import { Box } from "routes/Home/Home"
+import Box from "components/Box/Box"
 import React, { useState, useContext, useEffect } from "react"
 import { useParams, useLocation, useNavigate } from "react-router-dom"
 import { SocketContext } from "../../socket"
