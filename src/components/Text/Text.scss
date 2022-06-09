@@ -49,6 +49,34 @@
 	font-weight: 700;
 }
 
+.large-a-text {
+	@extend .any-text;
+
+	display: block;
+	font-size: $large-a;
+	font-weight: 700;
+}
+
+.large-b-text {
+	@extend .any-text;
+
+	display: block;
+	font-size: $large-b;
+	font-weight: 700;
+}
+
+.medium-b-text {
+	@extend .any-text;
+
+	display: block;
+	font-size: $medium-b;
+	font-weight: 700;
+}
+
+.fc-light {
+	color: $primary-light;
+}
+
 .fw-400 {
 	font-weight: 400;
 }

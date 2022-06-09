@@ -6,8 +6,8 @@
 	background: none;
 	outline: none;
 	cursor: pointer;
-	padding: 0;
-	height: 50px;
+	padding: 4px;
+	max-height: 80px;
 }
 
 .action-btn {
@@ -24,11 +24,8 @@
 
 	background-color: $primary;
 	color: $primary-dark-a;
-	font-size: 42px;
-	height: fit-content;
-	width: fit-content;
-	padding: 10px 20px;
-	
+	box-sizing: border-box;
+
 	border-radius: 5px;
 }
 
@@ -40,12 +37,10 @@
 
 	background-color: $primary-dark-a;
 	color: $primary-light;
-	font-size: 24px;
 
 	height: 100px;
 	width: fit-content;
 
-	
 	border-radius: 5px;
 }
 
@@ -53,15 +48,14 @@
 	@extend .any-btn;
 	background-color: $primary;
 	color: $primary-light;
-	font-size: 24px;
-	
+
 	width: 41px;
 	height: 41px;
-	
+
 	border-radius: 5px;
 }
-.icon-container{
+.icon-container {
 	display: flex;
-  	align-items: center;
-  	justify-content: center;
+	align-items: center;
+	justify-content: center;
 }
