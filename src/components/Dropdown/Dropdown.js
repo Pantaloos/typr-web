@@ -13,9 +13,7 @@ const Dropdown = ({
   const toggle = () => setOpen(!open);
 
   useEffect(() => {
-    if (!open) {
-      onValueChange(title);
-    }
+    onValueChange(title);
   }, [title]);
 
   function handleOnClick(item) {
