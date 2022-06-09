@@ -74,10 +74,11 @@ const Room = () => {
           textType="large-b"
           customStyle="fw-700 w-100 mt-24"
           onClick={() => {
-            socket.emit("readyUp")
+            socket.emit("leaveRoom", { roomCode: id })
+            navigate(`/`)
           }}
         >
-          START/READY
+          LEAVE
         </Button>
       </div>
       <div
@@ -89,6 +90,16 @@ const Room = () => {
             CURRENTLY UNAVAILABLE, SET TO DEFAULT
           </Text>
         </Box>
+        <Button
+          type="filled"
+          textType="large-b"
+          customStyle="fw-700 w-100 mt-24"
+          onClick={() => {
+            socket.emit("readyUp")
+          }}
+        >
+          START/READY
+        </Button>
       </div>
     </div>
   )
