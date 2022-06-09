@@ -1,41 +1,53 @@
 import Button from "components/Button/Button"
-import Input from "components/Input/Input"
 import Text from "components/Text/Text"
 import { Box } from "routes/Home/Home"
-import { io } from "socket.io-client"
-import React, { useState, useContext, useCallback, useEffect } from "react"
+import React, { useState, useContext, useEffect } from "react"
+import { useParams, useLocation, useNavigate } from "react-router-dom"
 import { SocketContext } from "../../socket"
 
 import "./Room.scss"
 
 const Room = () => {
-  const [socket, setSocket] = useState(null)
+  const { id } = useParams()
+  const { state } = useLocation()
+  const { nickname } = state
+
+  const [playersInfo, updatePlayersInfo] = useState([])
+  const [gameStarting, updateGameStarting] = useState(false)
+
+  const socket = useContext(SocketContext)
+  const navigate = useNavigate()
 
   useEffect(() => {
-    if (socket === null) {
-      setSocket(io("188.121.208.146:8000"))
-    }
-    // socket.on("connect", () => {
-    //   socket.on("userCreated", (data) => {
-    //     console.log("userCreatedData", data)
-    //   })
-
-    //   socket.on("roomUpdated", (data) => {
-    //     console.log("roomUpdatedData", data)
-    //   })
-    // })
-
     if (socket) {
-      socket.on("connect", () => {
-        socket.emit("joined", { serverchannel: 120 })
-        console.log("Connected")
+      socket.emit("joinRoom", {
+        roomCode: id,
+        createUserDto: { name: nickname },
       })
 
       socket.on("userCreated", (data) => {
         console.log(data)
       })
+
+      socket.on("roomUpdated", (data) => {
+        updatePlayersInfo(data)
+        //console.log(data)
+      })
+      socket.on("gameStarted", (data) => {
+        console.log(data)
+        updateGameStarting(true)
+        //console.log(data)
+      })
+
+      return () => {
+        if (!gameStarting) socket.emit("leaveRoom", { roomCode: id })
+      }
     }
-  }, [socket])
+  }, [])
+
+  useEffect(() => {
+    if (gameStarting) navigate("/game")
+  }, [gameStarting])
 
   return (
     <div
@@ -48,17 +60,19 @@ const Room = () => {
       }}
     >
       <div className="w-100 h-100" style={{ width: "380px", height: "600px" }}>
-        <Box title="PLAYERS"></Box>
+        <Box title="PLAYERS">
+          {playersInfo.map((player) => (
+            <div className="text-color" id={player.id}>
+              {player.name}
+            </div>
+          ))}
+        </Box>
         <Button
           type="filled"
           textType="large-b"
           customStyle="fw-700 w-100 mt-24"
           onClick={() => {
-            console.log("emmiting message")
-            socket.emit("joinRoom", {
-              roomCode: "XLMLP",
-              createUserDto: { name: "OOGABOOA" },
-            })
+            socket.emit("readyUp")
           }}
         >
           START/READY
