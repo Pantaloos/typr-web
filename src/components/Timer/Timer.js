@@ -4,6 +4,7 @@ import { useState, useEffect } from "react"
 
 const Timer = (props) => {
   const { initialMinute = 0, initialSeconds = 0 } = props
+  const { timeoutHandler = () => {} } = props
   const [minutes, setMinutes] = useState(initialMinute)
   const [seconds, setSeconds] = useState(initialSeconds)
   useEffect(() => {
@@ -14,6 +15,7 @@ const Timer = (props) => {
       if (seconds === 0) {
         if (minutes === 0) {
           clearInterval(myInterval)
+          timeoutHandler()
         } else {
           setMinutes(minutes - 1)
           setSeconds(59)
