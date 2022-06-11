@@ -5,18 +5,16 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
 const Results = () => {
-  const { id } = useParams();
+  const { id: gameId } = useParams();
 
   const [results, setResults] = useState([]);
 
   useEffect(() => {
-    console.log(id);
-    fetch(`http://188.121.208.146:8000/result/game/${id}`)
+    fetch(`http://188.121.208.146:8000/result/game/${gameId}`)
       .then((response) => {
         return response.json();
       })
       .then((data) => {
-        console.log(data);
         setResults(data);
       });
   }, []);
@@ -32,17 +30,22 @@ const Results = () => {
           <div className="flex-h space-between">
             <div className="flex-v">
               {results.map((data) => (
-                <span className="label-class label-text">{data.user.name}</span>
+                <span key={data.user.id} className="label-class label-text">
+                  {data.user.name}
+                </span>
               ))}
             </div>
             <div className="flex-v">
               {results.map((data) => (
-                <span className="points-color"> {data.points}</span>
+                <span key={data.user.id} className="points-color">
+                  {" "}
+                  {data.points}
+                </span>
               ))}
             </div>
             <div className="flex-v">
               {results.map((data) => (
-                <span className="label-class label-text">
+                <span key={data.user.id} className="label-class label-text">
                   {data.time} seconds / {data.mistakes} mistakes
                 </span>
               ))}

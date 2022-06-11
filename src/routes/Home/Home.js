@@ -62,7 +62,6 @@ function Home() {
                     return response.json();
                   })
                   .then((data) => {
-                    console.log(data);
                     navigate(`/room/${data.code}`, {
                       state: { nickname: nickname },
                     });

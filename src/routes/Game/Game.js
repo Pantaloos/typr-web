@@ -26,9 +26,7 @@ function Game() {
   }, []);
 
   const gameOverHandle = () => {
-    console.log(gameState);
     const mistakes = gameState.filter((it) => !it).length;
-    console.log("Me here");
     socket.emit("submitResult", { mistakes });
 
     navigate(`/result/${gameId}`);
@@ -41,7 +39,6 @@ function Game() {
         text={gameText}
         gameOverHandle={gameOverHandle}
         onGameStateChange={(gs) => {
-          console.log(gs);
           setGameState(gs);
         }}
       ></Display>

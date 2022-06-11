@@ -25,25 +25,19 @@ const Room = () => {
       });
 
       socket.on("userCreated", (data) => {
-        console.log(data);
+        // Some stuff
       });
 
       socket.on("roomUpdated", (data) => {
         updatePlayersInfo(data);
       });
       socket.on("gameStarted", (data) => {
-        console.log(data);
         navigate(`/game/${id}`, {
           state: { gameText: data.text, gameId: data.gameId },
         });
-        //console.log(data)
       });
     }
   }, []);
-
-  // useEffect(() => {
-  //   if (gameStarting) navigate(`/game/${id}`)
-  // }, [gameStarting])
 
   return (
     <div
