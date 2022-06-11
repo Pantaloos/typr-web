@@ -1,33 +1,25 @@
-import "./Player.scss";
+import "./Player.scss"
 
 const Player = ({
-	type = "lobby",
-	textType = "basic",
-	customStyle = "",
-	textCustomStyle="",
-	name = "",
-	children,
-	iconWidth = 50,
-	iconHeight= 50,
-	playerIcon = 'placeholder_player_image.png',
-	playerName = " placeholder name",
-	...props
+  playerIcon = "placeholder_player_image.png",
+  playerName = " placeholder name",
+  imageCustomStyle = "",
+  containerCustomStyle = "",
+  textCustomStyle = "",
 }) => {
-	const iconTypeClass = type;
-	const textTypeClass = textType;
-	const iconClassName = `${iconTypeClass} ${textTypeClass}-text ${customStyle}`;
+  const imageClass = `${imageCustomStyle} img`
+  const textClass = `${textCustomStyle} player-name`
+  const containerClass = `${containerCustomStyle} player-container`
 
-	const images = require.context('../../assets/icons/', true);
-	const image = images(`./${playerIcon}`);
+  const images = require.context("../../assets/icons/", true)
+  const image = images(`./${playerIcon}`)
 
-	return (
-		<div className={iconClassName} style={{display:"flex"}}>
-			<img src={image} alt="Avatar" style={{width:iconWidth , height: iconHeight , borderRadius: iconHeight/ 2}}></img>
-			<span className={textCustomStyle} style={{display: "flex", alignItems:"center", color: "#b4caea"}}>
-				{playerName}
-			</span>
-		</div>
-	);
-};
+  return (
+    <div className={containerClass}>
+      <img src={image} alt="Avatar" className={imageClass}></img>
+      <span className={textClass}>{playerName}</span>
+    </div>
+  )
+}
 
-export default Player;
+export default Player
