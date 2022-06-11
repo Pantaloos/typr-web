@@ -4,6 +4,7 @@ import Box from "components/Box/Box"
 import React, { useState, useContext, useEffect } from "react"
 import { useParams, useLocation, useNavigate } from "react-router-dom"
 import { SocketContext } from "../../socket"
+import Player from "components/Player/Player"
 
 import "./Room.scss"
 
@@ -30,6 +31,7 @@ const Room = () => {
 
       socket.on("roomUpdated", (data) => {
         updatePlayersInfo(data)
+        console.log(data)
       })
       socket.on("gameStarted", (data) => {
         console.log(data)
@@ -55,8 +57,11 @@ const Room = () => {
       <div className="w-100 h-100" style={{ width: "380px", height: "600px" }}>
         <Box title="PLAYERS">
           {playersInfo.map((player) => (
-            <div className="text-color" id={player.id}>
-              {player.name}
+            <div className="flex-h flex-space-between" id={player.id}>
+              <Player playerName={player.name}></Player>
+              {player.ready && (
+                <span className="ready-text-style flex-center-v">READY</span>
+              )}
             </div>
           ))}
         </Box>
@@ -86,7 +91,7 @@ const Room = () => {
           textType="large-b"
           customStyle="fw-700 w-100 mt-24"
           onClick={() => {
-            socket.emit("readyUp")
+            socket.emit("toggleReady")
           }}
         >
           START/READY
