@@ -1,47 +1,43 @@
-import Button from "components/Button/Button"
-import Text from "components/Text/Text"
-import Box from "components/Box/Box"
-import React, { useState, useContext, useEffect } from "react"
-import { useParams, useLocation, useNavigate } from "react-router-dom"
-import { SocketContext } from "../../socket"
+import Button from "components/Button/Button";
+import Text from "components/Text/Text";
+import Box from "components/Box/Box";
+import React, { useState, useContext, useEffect } from "react";
+import { useParams, useLocation, useNavigate } from "react-router-dom";
+import { SocketContext } from "../../socket";
 
-import "./Room.scss"
+import "./Room.scss";
 
 const Room = () => {
-  const { id } = useParams()
-  const { state } = useLocation()
-  const { nickname } = state
+  const { id } = useParams();
+  const { state } = useLocation();
+  const { nickname } = state;
 
-  const [playersInfo, updatePlayersInfo] = useState([])
+  const [playersInfo, updatePlayersInfo] = useState([]);
 
-  const socket = useContext(SocketContext)
-  const navigate = useNavigate()
+  const socket = useContext(SocketContext);
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (socket) {
       socket.emit("joinRoom", {
         roomCode: id,
         createUserDto: { name: nickname },
-      })
+      });
 
       socket.on("userCreated", (data) => {
-        console.log(data)
-      })
+        // Some stuff
+      });
 
       socket.on("roomUpdated", (data) => {
-        updatePlayersInfo(data)
-      })
+        updatePlayersInfo(data);
+      });
       socket.on("gameStarted", (data) => {
-        console.log(data)
-        navigate(`/game/${id}`, { state: { gameText: data.text } })
-        //console.log(data)
-      })
+        navigate(`/game/${id}`, {
+          state: { gameText: data.text, gameId: data.gameId },
+        });
+      });
     }
-  }, [])
-
-  // useEffect(() => {
-  //   if (gameStarting) navigate(`/game/${id}`)
-  // }, [gameStarting])
+  }, []);
 
   return (
     <div
@@ -65,8 +61,8 @@ const Room = () => {
           textType="large-b"
           customStyle="fw-700 w-100 mt-24"
           onClick={() => {
-            socket.emit("leaveRoom", { roomCode: id })
-            navigate(`/`)
+            socket.emit("leaveRoom", { roomCode: id });
+            navigate(`/`);
           }}
         >
           LEAVE
@@ -86,14 +82,14 @@ const Room = () => {
           textType="large-b"
           customStyle="fw-700 w-100 mt-24"
           onClick={() => {
-            socket.emit("readyUp")
+            socket.emit("toggleReady");
           }}
         >
           START/READY
         </Button>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Room
+export default Room;

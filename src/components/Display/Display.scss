@@ -19,21 +19,18 @@
     line-height: $large-a;
 
     border-radius: 5px;
-
-    -webkit-user-select: none;
-    -khtml-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    -o-user-select: none;
-    user-select: none;
-
 }
 
-.correct-chars{
+.correct-char{
     opacity: 0.5;
 }
 
 .current-char{
     background-color: $primary;
     color: $dark;
+}
+
+.incorrect-char{
+    opacity: 0.5;
+    color: red;
 }
