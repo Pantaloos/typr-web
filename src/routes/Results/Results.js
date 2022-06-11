@@ -1,8 +1,24 @@
-import "./Results.scss"
-import Button from "components/Button/Button"
-import Box from "components/Box/Box"
+import "./Results.scss";
+import Button from "components/Button/Button";
+import Box from "components/Box/Box";
+import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 
 const Results = () => {
+  const { id: gameId } = useParams();
+
+  const [results, setResults] = useState([]);
+
+  useEffect(() => {
+    fetch(`http://188.121.208.146:8000/result/game/${gameId}`)
+      .then((response) => {
+        return response.json();
+      })
+      .then((data) => {
+        setResults(data);
+      });
+  }, []);
+
   return (
     <div className="flex flex-v height100h">
       <div customStyle="main-div">
@@ -13,30 +29,26 @@ const Results = () => {
         >
           <div className="flex-h space-between">
             <div className="flex-v">
-              <span className="label-class label-text">VORDTY</span>
-              <span className="label-class label-text">LUX</span>
-              <span className="label-class label-text">HULU</span>
-              <span className="label-class label-text">LEVANTE</span>
+              {results.map((data) => (
+                <span key={data.user.id} className="label-class label-text">
+                  {data.user.name}
+                </span>
+              ))}
             </div>
             <div className="flex-v">
-              <span className="points-color"> 100 points</span>
-              <span className="points-color"> 200 points</span>
-              <span className="points-color"> 300 points</span>
-              <span className="points-color"> 400 points</span>
+              {results.map((data) => (
+                <span key={data.user.id} className="points-color">
+                  {" "}
+                  {data.points}
+                </span>
+              ))}
             </div>
             <div className="flex-v">
-              <span className="label-class label-text">
-                65 seconds / 3 mistakes
-              </span>
-              <span className="label-class label-text">
-                60 seconds / 2 mistakes
-              </span>
-              <span className="label-class label-text">
-                50 seconds / 1 mistakes
-              </span>
-              <span className="label-class label-text">
-                40 seconds / 0 mistakes
-              </span>
+              {results.map((data) => (
+                <span key={data.user.id} className="label-class label-text">
+                  {data.time} seconds / {data.mistakes} mistakes
+                </span>
+              ))}
             </div>
           </div>
         </Box>
@@ -54,7 +66,7 @@ const Results = () => {
         ></Button>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Results
+export default Results;

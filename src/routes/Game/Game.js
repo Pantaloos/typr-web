@@ -1,33 +1,48 @@
-import Display from "components/Display/Display"
-import "./Game.scss"
-import React, { useState, useContext, useEffect } from "react"
-import { useParams, useLocation, useNavigate } from "react-router-dom"
-import { SocketContext } from "../../socket"
-import Timer from "components/Timer/Timer"
+import Display from "components/Display/Display";
+import "./Game.scss";
+import React, { useState, useContext, useEffect } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
+import { SocketContext } from "../../socket";
+import Timer from "components/Timer/Timer";
 
 function Game() {
-  const socket = useContext(SocketContext)
-  const { id } = useParams()
+  const socket = useContext(SocketContext);
+  const navigate = useNavigate();
 
-  const { state } = useLocation()
-  const { gameText } = state
+  const { state } = useLocation();
+  const { gameText, gameId } = state;
 
   // const gameText =
   //   "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."
 
+  const [gameState, setGameState] = useState([]);
+
   useEffect(() => {
     if (socket) {
-      return () => {
-        // socket.emit("leaveRoom", { roomCode: id })
-      }
+      socket.on("gameOver", () => {
+        gameOverHandle();
+      });
     }
-  }, [])
+  }, []);
+
+  const gameOverHandle = () => {
+    const mistakes = gameState.filter((it) => !it).length;
+    socket.emit("submitResult", { mistakes });
+
+    navigate(`/result/${gameId}`);
+  };
 
   return (
     <div className="flex-v">
       <Timer initialSeconds={10}></Timer>
-      <Display text={gameText}></Display>
+      <Display
+        text={gameText}
+        gameOverHandle={gameOverHandle}
+        onGameStateChange={(gs) => {
+          setGameState(gs);
+        }}
+      ></Display>
     </div>
-  )
+  );
 }
-export default Game
+export default Game;

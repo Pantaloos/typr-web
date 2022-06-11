@@ -1,45 +1,41 @@
-import Button from "components/Button/Button"
-import Input from "components/Input/Input"
-import Room from "components/Room/Room"
-import Text from "components/Text/Text"
-import { useEffect, useState } from "react"
-import { useNavigate } from "react-router-dom"
-import "./Home.scss"
+import Button from "components/Button/Button";
+import Input from "components/Input/Input";
+import Room from "components/Room/Room";
+import Text from "components/Text/Text";
+import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import "./Home.scss";
 //import Box
-import Box from "components/Box/Box"
+import Box from "components/Box/Box";
 
 function Home() {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
-  const [rooms, updateRooms] = useState([])
-  const [code, updateCode] = useState("")
-  const [nickname, updateNickname] = useState("")
+  const [rooms, updateRooms] = useState([]);
+  const [code, updateCode] = useState("");
+  const [nickname, updateNickname] = useState("");
 
   const codeInputHandler = (enteredInput) => {
-    updateCode(enteredInput)
-  }
+    updateCode(enteredInput);
+  };
 
   const nicknameInputHandler = (enteredInput) => {
-    updateNickname(enteredInput)
-  }
+    updateNickname(enteredInput);
+  };
 
   function fetchRoomsHandler() {
     fetch("http://188.121.208.146:8000/room")
       .then((response) => {
-        return response.json()
+        return response.json();
       })
       .then((data) => {
-        updateRooms(data)
-      })
+        updateRooms(data);
+      });
   }
 
   useEffect(() => {
-    fetchRoomsHandler()
-  }, [])
-
-  useEffect(() => {
-    console.log(rooms)
-  }, [rooms])
+    fetchRoomsHandler();
+  }, []);
 
   return (
     <div className="flex flex-v">
@@ -63,14 +59,13 @@ function Home() {
                   body: JSON.stringify({ name: nickname }),
                 })
                   .then((response) => {
-                    return response.json()
+                    return response.json();
                   })
                   .then((data) => {
-                    console.log(data)
                     navigate(`/room/${data.code}`, {
                       state: { nickname: nickname },
-                    })
-                  })
+                    });
+                  });
               }
             }}
           >
@@ -106,7 +101,7 @@ function Home() {
               if (nickname !== "" && code.length === 5) {
                 navigate(`/room/${code}`, {
                   state: { nickname: nickname },
-                })
+                });
               }
             }}
           >
@@ -126,7 +121,7 @@ function Home() {
                   if (nickname !== "") {
                     navigate(`/room/${room.code}`, {
                       state: { nickname: nickname },
-                    })
+                    });
                   }
                 }}
               ></Room>
@@ -135,7 +130,7 @@ function Home() {
         </div>
       </div>
     </div>
-  )
+  );
 }
 
-export default Home
+export default Home;
