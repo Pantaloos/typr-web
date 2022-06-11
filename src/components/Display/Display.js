@@ -1,6 +1,9 @@
-import "./Display.scss"
-import Input from "components/Input/Input"
-import { useEffect, useState } from "react"
+import "./Display.scss";
+import Input from "components/Input/Input";
+import { useEffect, useState } from "react";
+import { getCharSequence } from "helpers/char.helper";
+
+const validCharSet = new Set(getCharSequence(" ", "~"));
 
 function Display({
   text = "placeholder  ",
@@ -9,58 +12,72 @@ function Display({
   inputCustomStyle = "",
   inputTextStyle = "",
   gameOverHandle = () => {},
+  onGameStateChange = () => {},
   ...props
 }) {
-  let fullText = text
+  let fullText = text;
 
-  const [playerInput, updatePlayerInput] = useState("")
-
-  const [mistake, updateMistake] = useState(false)
-  const [correctChars, updateCorrectChars] = useState("")
-  const [currentChar, updateCurrentChar] = useState("")
-
-  const [leftChars, updateLeftChars] = useState(fullText)
+  const [playerInput, setPlayerInput] = useState("");
+  const [hashMap, setHashMap] = useState([...fullText].map(() => false));
+  const [currentIndex, setCurrentIndex] = useState(0);
 
   const playerInputHandler = (enteredText) => {
-    updatePlayerInput(enteredText)
-  }
-  useEffect(() => {
-    for (let i = playerInput.length; i > 0; i--) {
-      const compareString = fullText.slice(0, i)
-      if (compareString === playerInput) {
-        updateCorrectChars(playerInput)
-        updateLeftChars(fullText.slice(i, fullText.length))
-        break
-      }
+    setPlayerInput(enteredText);
+  };
+
+  const onKeyDown = (event) => {
+    if (event.key === "Backspace") {
+      if (currentIndex !== 0) setCurrentIndex(currentIndex - 1);
+      return;
     }
-  }, [playerInput])
 
-  useEffect(() => {
-    updateCurrentChar(leftChars.slice(0, 1))
-  }, [leftChars])
-
-  useEffect(() => {
-    if (playerInput === fullText) {
-      gameOverHandle()
+    if (!validCharSet.has(event.key) || currentIndex === fullText.length) {
+      return;
     }
-  }, [correctChars, playerInput])
 
-  const displayStyle = `text-display ${displayTextStyle} ${displayCustomStyle}`
-  const inputStyle = `${inputTextStyle} ${inputCustomStyle}`
+    setHashMap((previousHashMap) => {
+      previousHashMap[currentIndex] = event.key === fullText[currentIndex];
+      return previousHashMap;
+    });
+    setCurrentIndex(currentIndex + 1);
+
+    onGameStateChange(hashMap);
+  };
+
+  const charClass = (index) => {
+    if (index > currentIndex) return "";
+    if (index === currentIndex) return "current-char";
+
+    return hashMap[index] ? "correct-char" : "incorrect-char";
+  };
+
+  useEffect(() => {
+    if (currentIndex === fullText.length) {
+      gameOverHandle(hashMap);
+    }
+  }, [currentIndex, fullText.length, gameOverHandle, hashMap]);
+
+  const displayStyle = `text-display ${displayTextStyle} ${displayCustomStyle} unselectable`;
+  const inputStyle = `${inputTextStyle} ${inputCustomStyle}`;
 
   return (
     <div className="flex-column">
       <div className={displayStyle}>
-        <span className="correct-chars">{correctChars}</span>
-        <span className="current-char">{currentChar}</span>
-        {leftChars.slice(1, leftChars.length)}
+        {[...fullText].map((c, ind) => (
+          <span key={ind} className={charClass(ind)}>
+            {c}
+          </span>
+        ))}
       </div>
       <Input
         className={inputStyle}
         type="multiple"
         onSaveInputData={playerInputHandler}
+        onKeyDown={onKeyDown}
+        isSelectable={false}
+        maxLength={fullText.length}
       ></Input>
     </div>
-  )
+  );
 }
-export default Display
+export default Display;
