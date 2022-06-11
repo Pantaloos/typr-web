@@ -161,6 +161,10 @@ $percent-increment: 1.5%;
 	align-items: flex-start;
 }
 
+.flex-space-between{
+	justify-content: space-between;
+}
+
 .ft-thin {
 	font-weight: 100;
 }

@@ -1,6 +1,9 @@
 @import "constants/sizes.scss";
 @import "constants/colors.scss";
 
-.text-color{
-    color: $primary-light;
+.ready-text-style{
+    color: $primary;
+    size: $medium-a;
+    font-weight: bold;
+
 }
