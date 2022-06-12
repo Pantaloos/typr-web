@@ -40,3 +40,13 @@ body {
 	background-color: $primary-dark-b;
 	border-radius: 5px;
 }
+
+.scrolalble::-webkit-scrollbar {
+    display: none; /* for Chrome, Safari, and Opera */
+}
+
+.scrolalble{
+	-ms-overflow-style: none; /* for Internet Explorer, Edge */
+    scrollbar-width: none;
+	overflow-y:scroll;
+}

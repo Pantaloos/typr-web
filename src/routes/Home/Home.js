@@ -109,7 +109,7 @@ function Home() {
         </div>
 
         <div style={{ width: "660px", height: "300px" }}>
-          <Box title="AVAILABLE ROOMS">
+          <Box title="AVAILABLE ROOMS" contentCustomStyle="scrolalble">
             {rooms.map((room) => (
               <Room
                 roomName={room.name}

@@ -39,7 +39,7 @@ const Results = () => {
               {results.map((data) => (
                 <span key={data.user.id} className="points-color">
                   {" "}
-                  {data.points}
+                  {data.points} points
                 </span>
               ))}
             </div>
