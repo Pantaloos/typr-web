@@ -22,7 +22,7 @@ const Room = () => {
     if (socket) {
       socket.emit("joinRoom", {
         roomCode: id,
-        createUserDto: { name: nickname },
+        updateUserDto: { name: nickname },
       });
 
       socket.on("userCreated", (data) => {
@@ -52,7 +52,7 @@ const Room = () => {
       <div className="w-100 h-100" style={{ width: "380px", height: "600px" }}>
         <Box title="PLAYERS">
           {playersInfo.map((player) => (
-            <div className="flex-h flex-space-between" id={player.id}>
+            <div className="flex-h flex-space-between" key={player.id}>
               <Player playerName={player.name}></Player>
               {player.ready && (
                 <span className="ready-text-style flex-center-v">READY</span>
@@ -65,7 +65,8 @@ const Room = () => {
           textType="large-b"
           customStyle="fw-700 w-100 mt-24"
           onClick={() => {
-            socket.emit("leaveRoom", { roomCode: id });
+            // socket.emit("leaveRoom", { roomCode: id });
+            socket.emit("leaveRoom");
             navigate(`/`);
           }}
         >

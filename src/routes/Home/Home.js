@@ -34,7 +34,6 @@ function Home() {
 
   useEffect(() => {
     fetchRoomsHandler();
-    console.log(process.env);
   }, []);
 
   return (

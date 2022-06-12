@@ -4,6 +4,7 @@ import React, { useState, useContext, useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { SocketContext } from "../../socket";
 import Timer from "components/Timer/Timer";
+import PlayerProgress from "components/PlayerProgress/PlayerProgress";
 
 function Game() {
   const socket = useContext(SocketContext);
@@ -33,8 +34,28 @@ function Game() {
   };
 
   return (
-    <div className="flex-v">
-      <Timer initialSeconds={10}></Timer>
+    <div className="flex-v pt-4">
+      <div className="flex">
+        <Timer initialSeconds={100} customStyle="timer-padding"></Timer>
+        <div className="flex players-container">
+          <PlayerProgress
+            progressProcentage={20}
+            containerCustomStyle="player-progress-padding"
+          ></PlayerProgress>
+          <PlayerProgress
+            progressProcentage={20}
+            containerCustomStyle="player-progress-padding"
+          ></PlayerProgress>
+          <PlayerProgress
+            progressProcentage={20}
+            containerCustomStyle="player-progress-padding"
+          ></PlayerProgress>
+          <PlayerProgress
+            progressProcentage={20}
+            containerCustomStyle="player-progress-padding"
+          ></PlayerProgress>
+        </div>
+      </div>
       <Display
         text={gameText}
         gameOverHandle={gameOverHandle}

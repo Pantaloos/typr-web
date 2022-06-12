@@ -1,2 +1,14 @@
 @import "constants/sizes.scss";
 @import "constants/colors.scss";
+
+.player-progress-padding{
+    padding: 10px 15px;
+}
+
+.players-container{
+    background-color: $primary-dark-a;
+    border-radius: 5px;
+}
+.timer-padding{
+    padding: 0px 50px;
+}
