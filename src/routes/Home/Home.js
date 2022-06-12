@@ -5,7 +5,6 @@ import Text from "components/Text/Text";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./Home.scss";
-//import Box
 import Box from "components/Box/Box";
 
 function Home() {
@@ -24,7 +23,7 @@ function Home() {
   };
 
   function fetchRoomsHandler() {
-    fetch("http://188.121.208.146:8000/room")
+    fetch(`http://${process.env.REACT_APP_API_URL}/room`)
       .then((response) => {
         return response.json();
       })
@@ -35,6 +34,7 @@ function Home() {
 
   useEffect(() => {
     fetchRoomsHandler();
+    console.log(process.env);
   }, []);
 
   return (
@@ -50,7 +50,7 @@ function Home() {
             customStyle="fw-700 w-100 mb-2"
             onClick={() => {
               if (nickname !== "") {
-                fetch("http://188.121.208.146:8000/room", {
+                fetch(`http://${process.env.REACT_APP_API_URL}/room`, {
                   method: "POST",
                   headers: {
                     Accept: "application/json, text/plain, */*",
