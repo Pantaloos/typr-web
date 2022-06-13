@@ -1,11 +1,16 @@
 import "./Results.scss";
 import Button from "components/Button/Button";
 import Box from "components/Box/Box";
-import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useEffect, useState, useContext } from "react";
+import { useParams, useNavigate, useLocation } from "react-router-dom";
+import { SocketContext } from "../../socket";
 
 const Results = () => {
   const { id: gameId } = useParams();
+  const socket = useContext(SocketContext);
+  const navigate = useNavigate();
+  const { state } = useLocation();
+  const { nickname, roomCode } = state;
 
   const [results, setResults] = useState([]);
 
@@ -58,11 +63,20 @@ const Results = () => {
           title="filled-btn"
           text="BACK"
           customStyle="my-button-left"
+          onClick={() => {
+            socket.emit("leaveRoom");
+            navigate(`/`);
+          }}
         ></Button>
         <Button
           title="filled-btn"
           text="PLAY AGAIN"
           customStyle="my-button-right"
+          onClick={() => {
+            navigate(`/room/${roomCode}`, {
+              state: { nickname: nickname },
+            });
+          }}
         ></Button>
       </div>
     </div>
