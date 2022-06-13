@@ -2,6 +2,7 @@ import "./Display.scss";
 import Input from "components/Input/Input";
 import { useEffect, useState } from "react";
 import { getCharSequence } from "helpers/char.helper";
+import { socket } from "socket";
 
 const validCharSet = new Set(getCharSequence(" ", "~"));
 
@@ -25,6 +26,8 @@ function Display({
     setPlayerInput(enteredText);
   };
 
+  const progressGame = () => {};
+
   const onKeyDown = (event) => {
     if (event.key === "Backspace") {
       if (currentIndex !== 0) setCurrentIndex(currentIndex - 1);
@@ -42,6 +45,7 @@ function Display({
     setCurrentIndex(currentIndex + 1);
 
     onGameStateChange(hashMap);
+    progressGame();
   };
 
   const charClass = (index) => {
@@ -55,6 +59,9 @@ function Display({
     if (currentIndex === fullText.length) {
       gameOverHandle(hashMap);
     }
+    socket.emit("progressGame", {
+      progress: Math.round((currentIndex / fullText.length) * 100),
+    });
   }, [currentIndex, fullText.length, gameOverHandle, hashMap]);
 
   const displayStyle = `text-display ${displayTextStyle} ${displayCustomStyle} unselectable`;
