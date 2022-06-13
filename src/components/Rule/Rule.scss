@@ -1,0 +1,12 @@
+@import "constants/sizes.scss";
+@import "constants/colors.scss";
+
+.text-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    font-size: $large-a;
+    color: $primary-light;
+    font-family: "Space Mono", monospace;
+    font-weight: bold;
+  }

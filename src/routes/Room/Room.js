@@ -5,6 +5,7 @@ import React, { useState, useContext, useEffect } from "react";
 import { useParams, useLocation, useNavigate } from "react-router-dom";
 import { SocketContext } from "../../socket";
 import Player from "components/Player/Player";
+import Rule from "components/Rule/Rule";
 
 import "./Room.scss";
 
@@ -15,8 +16,22 @@ const Room = () => {
 
   const [playersInfo, updatePlayersInfo] = useState([]);
 
+  const [ruleTypes, setRuleTypes] = useState([]);
+  const [rules, updateRules] = useState({});
+
   const socket = useContext(SocketContext);
   const navigate = useNavigate();
+
+  const onRuleValueChange = (key, value, text) => {
+    updateRules((prev) => {
+      if (prev[key] === value) return prev;
+
+      prev[key] = value;
+      socket.emit("updateRules", prev);
+
+      return prev;
+    });
+  };
 
   useEffect(() => {
     if (socket) {
@@ -27,6 +42,15 @@ const Room = () => {
 
       socket.on("userCreated", (data) => {
         // Some stuff
+      });
+
+      socket.on("ruleTypes", (data) => {
+        setRuleTypes(data);
+      });
+
+      socket.on("rulesUpdated", (data) => {
+        console.log(data);
+        updateRules(data);
       });
 
       socket.on("roomUpdated", (data) => {
@@ -42,7 +66,7 @@ const Room = () => {
         });
       });
     }
-  }, []);
+  }, [socket, id, nickname, navigate]);
 
   return (
     <div
@@ -81,10 +105,17 @@ const Room = () => {
         className="ml-5 w-100 h-100"
         style={{ width: "870px", height: "600px" }}
       >
-        <Box title="MODES">
-          <Text type="medium-b" customStyle="fc-light">
-            CURRENTLY UNAVAILABLE, SET TO DEFAULT
-          </Text>
+        <Box title="RULES">
+          {Object.entries(rules).map(([key, value]) => {
+            return (
+              <Rule
+                key={`${key}-${value}`}
+                value={value}
+                data={ruleTypes.find((it) => it.key === key)}
+                onValueChange={onRuleValueChange}
+              ></Rule>
+            );
+          })}
         </Box>
         <Button
           type="filled"

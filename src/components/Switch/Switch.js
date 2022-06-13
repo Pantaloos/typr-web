@@ -1,12 +1,15 @@
-import { Fragment, useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import "./Switch.scss";
 
 const Switch = ({ value, onValueChange, options, customStyle }) => {
   const [selected, setSelected] = useState(value);
-  console.log(options);
 
   useEffect(() => {
-    if (onValueChange) onValueChange(selected);
+    if (onValueChange)
+      onValueChange(
+        selected,
+        Object.values(options).find((it) => it.value === selected)
+      );
   }, [selected]);
 
   const onSelect = (type) => {
