@@ -38,6 +38,8 @@ const Room = () => {
             gameText: data.text,
             gameId: data.gameId,
             progress: data.progress,
+            nickname: nickname,
+            roomCode: id,
           },
         });
       });
