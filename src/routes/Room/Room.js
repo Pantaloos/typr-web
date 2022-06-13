@@ -34,7 +34,11 @@ const Room = () => {
       });
       socket.on("gameStarted", (data) => {
         navigate(`/game/${id}`, {
-          state: { gameText: data.text, gameId: data.gameId },
+          state: {
+            gameText: data.text,
+            gameId: data.gameId,
+            progress: data.progress,
+          },
         });
       });
     }
