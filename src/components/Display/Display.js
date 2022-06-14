@@ -26,8 +26,6 @@ function Display({
     setPlayerInput(enteredText);
   };
 
-  const progressGame = () => {};
-
   const onKeyDown = (event) => {
     if (event.key === "Backspace") {
       if (currentIndex !== 0) setCurrentIndex(currentIndex - 1);
@@ -40,12 +38,11 @@ function Display({
 
     setHashMap((previousHashMap) => {
       previousHashMap[currentIndex] = event.key === fullText[currentIndex];
+      onGameStateChange(previousHashMap);
+
       return previousHashMap;
     });
     setCurrentIndex(currentIndex + 1);
-
-    onGameStateChange(hashMap);
-    progressGame();
   };
 
   const charClass = (index) => {
@@ -57,12 +54,12 @@ function Display({
 
   useEffect(() => {
     if (currentIndex === fullText.length) {
-      gameOverHandle(hashMap);
+      gameOverHandle();
     }
     socket.emit("progressGame", {
       progress: Math.round((currentIndex / fullText.length) * 100),
     });
-  }, [currentIndex, fullText.length, gameOverHandle, hashMap]);
+  }, [currentIndex, fullText.length, gameOverHandle]);
 
   const displayStyle = `text-display ${displayTextStyle} ${displayCustomStyle} unselectable`;
   const inputStyle = `${inputTextStyle} ${inputCustomStyle}`;

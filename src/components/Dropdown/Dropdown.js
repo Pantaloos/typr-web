@@ -13,14 +13,18 @@ const Dropdown = ({
   const toggle = () => setOpen(!open);
 
   useEffect(() => {
-    onValueChange(title);
-  }, [title]);
+    if (onValueChange) {
+      if (selection[0]) {
+        onValueChange(selection[0].value, selection[0].text);
+      }
+    }
+  }, [selection, onValueChange]);
 
   function handleOnClick(item) {
-    if (!selection.some((current) => current.id === item.id)) {
+    if (!selection.some((current) => current.value === item.value)) {
       if (!multiSelect) {
         setSelection([item]);
-        setTitle(item.value);
+        setTitle(item.text);
         setOpen(false);
       }
     }
@@ -47,7 +51,7 @@ const Dropdown = ({
           {items.map((item) => (
             <li className="dd-list-item" key={item.id}>
               <button type="button" onClick={() => handleOnClick(item)}>
-                <span>{item.value}</span>
+                <span>{item.text}</span>
               </button>
             </li>
           ))}
