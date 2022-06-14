@@ -10,8 +10,6 @@ const Rule = ({ value, onValueChange, data, ...props }) => {
     switch (type) {
       case "multiple":
         const { values } = data;
-        console.log("values", values);
-        console.log("VALUE", value);
         text = values.find((it) => it.value === value).text;
         return (
           <Dropdown

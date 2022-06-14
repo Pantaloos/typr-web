@@ -15,6 +15,10 @@
     height:50px;
     border-radius: 25px;
 }
+
+.img-outline{
+    box-shadow: 0 0 0 2pt $primary;
+}
 .player-container{
     display: flex;
     margin-top: 10px;
