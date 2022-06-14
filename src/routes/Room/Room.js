@@ -49,7 +49,6 @@ const Room = () => {
       });
 
       socket.on("rulesUpdated", (data) => {
-        console.log(data);
         updateRules(data);
       });
 
@@ -83,7 +82,10 @@ const Room = () => {
         <Box title="PLAYERS">
           {playersInfo.map((player) => (
             <div className="flex-h flex-space-between" key={player.id}>
-              <Player playerName={player.name}></Player>
+              <Player
+                playerName={player.name}
+                outline={socket.id === player.socketId}
+              ></Player>
               {player.ready && (
                 <span className="ready-text-style flex-center-v">READY</span>
               )}

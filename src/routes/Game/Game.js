@@ -53,6 +53,7 @@ function Game() {
               progressProcentage={it.progress}
               key={it.id}
               containerCustomStyle="player-progress-padding"
+              outline={socket.id === it.socketId}
             ></PlayerProgress>
           ))}
         </div>
