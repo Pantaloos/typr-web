@@ -22,6 +22,10 @@ const Results = () => {
       .then((data) => {
         setResults(data);
       });
+
+    socket.on("resultsUpdated", (data) => {
+      setResults(data.results);
+    });
   }, []);
 
   return (
