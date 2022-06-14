@@ -36,11 +36,9 @@ const Rule = ({ value, onValueChange, data, ...props }) => {
   };
 
   return (
-    <div className="flex-v">
-      <div className="flex-h space-between">
-        <Text customStyle="text-container"> {name}</Text>
-        {getComponent()}
-      </div>
+    <div className="rule-container">
+      <Text customStyle="rule-text"> {name}</Text>
+      {getComponent()}
     </div>
   );
 };
