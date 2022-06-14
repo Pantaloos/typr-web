@@ -1,6 +1,6 @@
 import Display from "components/Display/Display";
 import "./Game.scss";
-import React, { useState, useContext, useEffect } from "react";
+import React, { useState, useContext, useEffect, useCallback } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { SocketContext } from "../../socket";
 import Timer from "components/Timer/Timer";
@@ -19,24 +19,24 @@ function Game() {
   const [gameState, setGameState] = useState([]);
   const [gameProgress, setGameProgress] = useState(progress);
 
+  const gameOverHandle = useCallback(() => {
+    const mistakes = gameState.filter((it) => !it).length;
+    socket.emit("submitResult", { mistakes });
+
+    navigate(`/result/${gameId}`);
+  }, [gameState, gameId, socket, navigate]);
+
   useEffect(() => {
     if (socket) {
       socket.on("gameOver", () => {
-        gameOverHandle();
+        gameOverHandle(gameState);
       });
 
       socket.on("progressUpdate", (data) => {
         setGameProgress(data);
       });
     }
-  }, []);
-
-  const gameOverHandle = () => {
-    const mistakes = gameState.filter((it) => !it).length;
-    socket.emit("submitResult", { mistakes });
-
-    navigate(`/result/${gameId}`);
-  };
+  }, [socket, gameState, gameOverHandle]);
 
   return (
     <div className="flex-v pt-4">
