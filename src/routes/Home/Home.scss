@@ -2,51 +2,41 @@
 @import "constants/colors.scss";
 
 body {
-	background-color: $gradient-a;
+  background-color: $gradient-a;
 }
 
 .siteName {
-	padding-top: 60px;
-	padding-bottom: 51px;
-	color: $primary;
-	font-weight: bold;
-	font-style: italic;
-	font-size: $giant;
-	overflow: visible;
+  padding-top: 60px;
+  padding-bottom: 51px;
+  color: $primary;
+  font-weight: bold;
+  font-style: italic;
+  font-size: $giant;
+  overflow: visible;
 }
 
 .label-class {
-	font-size: 16px;
-	color: $primary-light;
+  font-size: 16px;
+  color: $primary-light;
 }
 
 .input-code {
-	background-color: $primary-dark-b;
-	width: 110px;
-	height: 41px;
-	font-size: 18px;
+  background-color: $primary-dark-b;
+  width: 110px;
+  height: 41px;
+  font-size: 18px;
 }
 .fillWidth {
-	width: 100%;
+  width: 100%;
 }
 .fill-80p {
-	width: 80%;
+  width: 80%;
 }
 .background-dark-a {
-	background-color: $primary-dark-a;
+  background-color: $primary-dark-a;
 }
 
 .background-dark-b {
-	background-color: $primary-dark-b;
-	border-radius: 5px;
-}
-
-.scrolalble::-webkit-scrollbar {
-    display: none; /* for Chrome, Safari, and Opera */
-}
-
-.scrolalble{
-	-ms-overflow-style: none; /* for Internet Explorer, Edge */
-    scrollbar-width: none;
-	overflow-y:scroll;
+  background-color: $primary-dark-b;
+  border-radius: 5px;
 }
