@@ -1,189 +1,200 @@
 @import url("https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap");
 
 body {
-	margin: 0;
-	font-family: "Space Mono", monospace;
-	-webkit-font-smoothing: antialiased;
-	-moz-osx-font-smoothing: grayscale;
-	box-sizing: border-box;
+  margin: 0;
+  font-family: "Space Mono", monospace;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  box-sizing: border-box;
 }
 
 code {
-	font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
 }
 
 .App {
-	margin: 16px;
+  margin: 16px;
 }
 
 $pixel-increment: 4px;
 $percent-increment: 1.5%;
 
 @for $i from 1 through 32 {
-	.mt-#{$i} {
-		margin-top: $i * $pixel-increment !important;
-	}
-	.mb-#{$i} {
-		margin-bottom: $i * $pixel-increment !important;
-	}
-	.ml-#{$i} {
-		margin-left: $i * $pixel-increment !important;
-	}
-	.mr-#{$i} {
-		margin-right: $i * $pixel-increment !important;
-	}
-	.m-#{$i} {
-		margin: $i * $pixel-increment !important;
-	}
+  .mt-#{$i} {
+    margin-top: $i * $pixel-increment !important;
+  }
+  .mb-#{$i} {
+    margin-bottom: $i * $pixel-increment !important;
+  }
+  .ml-#{$i} {
+    margin-left: $i * $pixel-increment !important;
+  }
+  .mr-#{$i} {
+    margin-right: $i * $pixel-increment !important;
+  }
+  .m-#{$i} {
+    margin: $i * $pixel-increment !important;
+  }
 
-	.pt-#{$i} {
-		padding-top: $i * $pixel-increment !important;
-	}
-	.pb-#{$i} {
-		padding-bottom: $i * $pixel-increment !important;
-	}
-	.pl-#{$i} {
-		padding-left: $i * $pixel-increment !important;
-	}
-	.pr-#{$i} {
-		padding-right: $i * $pixel-increment !important;
-	}
-	.p-#{$i} {
-		padding: $i * $pixel-increment !important;
-	}
+  .pt-#{$i} {
+    padding-top: $i * $pixel-increment !important;
+  }
+  .pb-#{$i} {
+    padding-bottom: $i * $pixel-increment !important;
+  }
+  .pl-#{$i} {
+    padding-left: $i * $pixel-increment !important;
+  }
+  .pr-#{$i} {
+    padding-right: $i * $pixel-increment !important;
+  }
+  .p-#{$i} {
+    padding: $i * $pixel-increment !important;
+  }
 
-	.mtpc-#{$i} {
-		margin-top: $i * $percent-increment !important;
-	}
-	.mbpc-#{$i} {
-		margin-bottom: $i * $percent-increment !important;
-	}
-	.mlpc-#{$i} {
-		margin-left: $i * $percent-increment !important;
-	}
-	.mrpc-#{$i} {
-		margin-right: $i * $percent-increment !important;
-	}
-	.mpc-#{$i} {
-		margin: $i * $percent-increment !important;
-	}
+  .mtpc-#{$i} {
+    margin-top: $i * $percent-increment !important;
+  }
+  .mbpc-#{$i} {
+    margin-bottom: $i * $percent-increment !important;
+  }
+  .mlpc-#{$i} {
+    margin-left: $i * $percent-increment !important;
+  }
+  .mrpc-#{$i} {
+    margin-right: $i * $percent-increment !important;
+  }
+  .mpc-#{$i} {
+    margin: $i * $percent-increment !important;
+  }
 
-	.wpc-#{$i} {
-		width: $i * $percent-increment * 5 !important;
-	}
+  .wpc-#{$i} {
+    width: $i * $percent-increment * 5 !important;
+  }
 
-	.hpc-#{$i} {
-		height: $i * $percent-increment * 5 !important;
-	}
+  .hpc-#{$i} {
+    height: $i * $percent-increment * 5 !important;
+  }
 }
 
 .no-pointer-events {
-	pointer-events: none;
+  pointer-events: none;
 }
 
 .z-important {
-	position: relative;
-	z-index: 1000;
+  position: relative;
+  z-index: 1000;
 }
 
 .w-100 {
-	width: 100%;
+  width: 100%;
 }
 
 .h-100 {
-	height: 100%;
+  height: 100%;
 }
 
 .capitalize {
-	text-transform: uppercase;
+  text-transform: uppercase;
 }
 
 .unselectable {
-	-webkit-user-select: none;
-	-khtml-user-select: none;
-	-moz-user-select: none;
-	-ms-user-select: none;
-	user-select: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 
 .corner-tl {
-	position: absolute;
-	top: 0;
-	left: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
 }
 
 .corner-tr {
-	position: absolute;
-	top: 0;
-	right: 0;
+  position: absolute;
+  top: 0;
+  right: 0;
 }
 
 .corner-bl {
-	position: absolute;
-	bottom: 0;
-	right: 0;
+  position: absolute;
+  bottom: 0;
+  right: 0;
 }
 .corner-br {
-	position: absolute;
-	bottom: 0;
-	right: 0;
+  position: absolute;
+  bottom: 0;
+  right: 0;
 }
 
 .flex {
-	display: flex;
-	justify-content: center;
-	align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .flex-center-h {
-	@extend .flex;
+  @extend .flex;
 
-	flex-direction: row;
+  flex-direction: row;
 }
 
 .flex-center-v {
-	@extend .flex;
+  @extend .flex;
 
-	flex-direction: column;
+  flex-direction: column;
 }
 
 .flex-v {
-	display: flex;
-	flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
 
 .flex-h {
-	display: flex;
-	flex-direction: row;
+  display: flex;
+  flex-direction: row;
 }
 
 .flex-align-start {
-	align-items: flex-start;
+  align-items: flex-start;
 }
 
-.flex-space-between{
-	justify-content: space-between;
+.flex-space-between {
+  justify-content: space-between;
 }
 
 .ft-thin {
-	font-weight: 100;
+  font-weight: 100;
 }
 
 .cursor-pointer {
-	cursor: pointer;
+  cursor: pointer;
 }
 
 .event-transparent {
-	pointer-events: none;
+  pointer-events: none;
 }
 
 .one-liner {
-	white-space: nowrap;
-	overflow: hidden;
+  white-space: nowrap;
+  overflow: hidden;
 }
 
 .overflow-dots {
-	text-overflow: ellipsis;
-	white-space: nowrap;
-	overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.scrolalble::-webkit-scrollbar {
+  display: none; /* for Chrome, Safari, and Opera */
+}
+
+.scrolalble {
+  -ms-overflow-style: none; /* for Internet Explorer, Edge */
+  scrollbar-width: none;
+  overflow-y: scroll;
 }

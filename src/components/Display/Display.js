@@ -75,6 +75,7 @@ function Display({
       </div>
       <Input
         className={inputStyle}
+        customInputClass="scrolalble"
         type="multiple"
         onSaveInputData={playerInputHandler}
         onKeyDown={onKeyDown}
