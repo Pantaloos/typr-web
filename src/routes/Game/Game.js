@@ -46,7 +46,7 @@ function Game() {
   return (
     <div className="flex-v pt-4">
       <div className="flex">
-        <Timer initialSeconds={100} customStyle="timer-padding"></Timer>
+        <Timer initialSeconds={30} customStyle="timer-padding"></Timer>
         <div className="flex players-container">
           {gameProgress.map((it) => (
             <PlayerProgress
