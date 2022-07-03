@@ -63,11 +63,12 @@ const Room = () => {
             progress: data.progress,
             nickname: nickname,
             roomCode: id,
+            time: rules.time,
           },
         });
       });
     }
-  }, [socket, id, nickname, navigate]);
+  }, [socket, id, nickname, rules.time, navigate]);
 
   return (
     <div

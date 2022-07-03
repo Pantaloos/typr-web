@@ -11,17 +11,18 @@ function Game() {
   const navigate = useNavigate();
 
   const { state } = useLocation();
-  const { gameText, gameId, progress, nickname, roomCode } = state;
+  const { gameText, gameId, progress, nickname, roomCode, time } = state;
 
   // const gameText =
   //   "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."
 
+  const [seconds, setSeconds] = useState(time);
   const [gameState, setGameState] = useState([]);
   const [gameProgress, setGameProgress] = useState(progress);
 
   const gameOverHandle = useCallback(() => {
     const mistakes = gameState.filter((it) => !it).length;
-    socket.emit("submitResult", { mistakes });
+    if (gameState.length !== 0) socket.emit("submitResult", { mistakes });
 
     navigate(`/result/${gameId}`, {
       state: {
@@ -29,7 +30,7 @@ function Game() {
         roomCode: roomCode,
       },
     });
-  }, [gameState, gameId, socket, navigate]);
+  }, [gameState, gameId, nickname, roomCode, socket, navigate]);
 
   useEffect(() => {
     if (socket) {
@@ -40,13 +41,17 @@ function Game() {
       socket.on("progressUpdate", (data) => {
         setGameProgress(data);
       });
+
+      socket.on("timerUpdated", (data) => {
+        setSeconds(data.timeLeft);
+      });
     }
   }, [socket, gameState, gameOverHandle]);
 
   return (
     <div className="flex-v pt-4">
       <div className="flex">
-        <Timer initialSeconds={30} customStyle="timer-padding"></Timer>
+        <Timer initialSeconds={seconds} customStyle="timer-padding"></Timer>
         <div className="flex players-container">
           {gameProgress.map((it) => (
             <PlayerProgress
