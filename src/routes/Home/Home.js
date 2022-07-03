@@ -114,7 +114,7 @@ function Home() {
               <Room
                 roomName={room.name}
                 key={room.id}
-                numberOfPeople="??"
+                numberOfPeople={room.userCount}
                 customStyle="mt-4 background-dark-b"
                 onClick={() => {
                   if (nickname !== "") {

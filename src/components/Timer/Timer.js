@@ -11,30 +11,31 @@ const Timer = (props) => {
   const timerContainerClass = `${props.customStyle} timer-container`;
 
   useEffect(() => {
-    let myInterval = setInterval(() => {
-      if (seconds > 0) {
-        setSeconds(seconds - 1);
-      }
-      if (seconds === 0) {
-        if (minutes === 0) {
-          clearInterval(myInterval);
-          timeoutHandler();
-        } else {
-          setMinutes(minutes - 1);
-          setSeconds(59);
-        }
-      }
-    }, 1000);
-    return () => {
-      clearInterval(myInterval);
-    };
+    // let myInterval = setInterval(() => {
+    //   if (seconds > 0) {
+    //     setSeconds(seconds - 1);
+    //   }
+    //   if (seconds === 0) {
+    //     if (minutes === 0) {
+    //       clearInterval(myInterval);
+    //       timeoutHandler();
+    //     } else {
+    //       setMinutes(minutes - 1);
+    //       setSeconds(59);
+    //     }
+    //   }
+    // }, 1000);
+    // return () => {
+    //   clearInterval(myInterval);
+    // };
   });
 
   return (
     <div className={timerContainerClass}>
       {minutes === 0 && seconds === 0 ? null : (
         <h1 className="my-h">
-          {minutes}:{seconds < 10 ? `0${seconds}` : seconds}
+          {initialMinute}:
+          {initialSeconds < 10 ? `0${initialSeconds}` : initialSeconds}
         </h1>
       )}
     </div>
