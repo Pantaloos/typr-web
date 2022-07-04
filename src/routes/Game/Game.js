@@ -22,7 +22,8 @@ function Game() {
 
   const gameOverHandle = useCallback(() => {
     const mistakes = gameState.filter((it) => !it).length;
-    if (gameState.length !== 0) socket.emit("submitResult", { mistakes });
+    if (gameState.length !== 0)
+      socket.emit("submitResult", { mistakes, textLength: gameText.length });
 
     navigate(`/result/${gameId}`, {
       state: {
@@ -30,7 +31,7 @@ function Game() {
         roomCode: roomCode,
       },
     });
-  }, [gameState, gameId, nickname, roomCode, socket, navigate]);
+  }, [gameState, gameId, nickname, roomCode, socket, gameText, navigate]);
 
   useEffect(() => {
     if (socket) {
