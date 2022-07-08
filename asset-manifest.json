@@ -1,0 +1,14 @@
+{
+  "files": {
+    "main.css": "/typr-web/static/css/main.cdba8e52.css",
+    "main.js": "/typr-web/static/js/main.0d7ac195.js",
+    "static/media/rightArrow.svg": "/typr-web/static/media/rightArrow.a0f81365cc9f563fa19c740cd2aa20ab.svg",
+    "index.html": "/typr-web/index.html",
+    "main.cdba8e52.css.map": "/typr-web/static/css/main.cdba8e52.css.map",
+    "main.0d7ac195.js.map": "/typr-web/static/js/main.0d7ac195.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.cdba8e52.css",
+    "static/js/main.0d7ac195.js"
+  ]
+}
