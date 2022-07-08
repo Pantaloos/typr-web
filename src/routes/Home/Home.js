@@ -75,7 +75,7 @@ function Home() {
               <Input
                 type="single"
                 label="CODE"
-                customLabelClass="label-class"
+                customLabelClass="label-class-home"
                 customInputClass="input-code"
                 containerStyle="mr-4"
                 maxLength="5"
@@ -85,7 +85,7 @@ function Home() {
               <Input
                 type="single"
                 label="NICKNAME"
-                customLabelClass="label-class"
+                customLabelClass="label-class-home"
                 customInputClass="input-code"
                 maxLength="12"
                 onSaveInputData={nicknameInputHandler}
