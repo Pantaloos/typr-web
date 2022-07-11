@@ -15,7 +15,7 @@ const Results = () => {
 	const [results, setResults] = useState([]);
 
 	useEffect(() => {
-		fetch(`${process.env.REACT_APP_API_URL}/result/game/${gameId}`)
+		fetch(`https://${process.env.REACT_APP_API_URL}/result/game/${gameId}`)
 			.then(response => {
 				return response.json();
 			})

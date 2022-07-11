@@ -23,7 +23,7 @@ function Home() {
 	};
 
 	function fetchRoomsHandler() {
-		fetch(`${process.env.REACT_APP_API_URL}/room`)
+		fetch(`https://${process.env.REACT_APP_API_URL}/room`)
 			.then(response => {
 				return response.json();
 			})
@@ -49,7 +49,7 @@ function Home() {
 						customStyle="fw-700 w-100 mb-2"
 						onClick={() => {
 							if (nickname !== "") {
-								fetch(`${process.env.REACT_APP_API_URL}/room`, {
+								fetch(`https://${process.env.REACT_APP_API_URL}/room`, {
 									method: "POST",
 									headers: {
 										Accept: "application/json, text/plain, */*",
